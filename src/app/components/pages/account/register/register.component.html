@@ -1,0 +1,80 @@
+<div class="row mt-4">
+    <div class="col-md-4 offset-4">
+        <div class="card">           
+            <div class="card-body">
+                <div class="text-center">
+                    <h5 class="card-title">Criar conta do usuário</h5>
+                    <p class="card-subtitle">Preencha os campos para criar sua conta</p>
+                </div>
+               
+                <form class="mt-1" [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+ 
+                    <div class="mb-2">
+                        <label>Nome do usuário:</label>
+                        <input type="text" class="form-control" placeholder="Digite seu nome aqui" formControlName="nome"/>
+                        <div class="text-danger" *ngIf="formularioRegister.nome.touched && formularioRegister.nome.invalid">
+                            <span *ngIf="formularioRegister.nome.errors.required">
+                                Por favor, informe seu nome de acesso.
+                            </span>   
+                        </div>
+                    </div>
+
+                    
+                    <div class="mb-2">
+                        <label>E-mail:</label>
+                        <input type="text" class="form-control" placeholder="Digite seu email aqui" formControlName="email"/>
+                        
+                        <div class="text-danger" *ngIf="formularioRegister.email.touched && formularioRegister.email.invalid">
+                            <span *ngIf="formularioRegister.email.errors.required">
+                                Por favor, informe seu email de acesso.
+                            </span>
+                            <span *ngIf="formularioRegister.email.errors.email">
+                                Por favor, informe um endereço de email válido.
+                            </span>   
+                        </div>                         
+                    </div>
+ 
+                    <div class="mb-2">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control" placeholder="Digite sua senha aqui" formControlName="senha"/>
+
+                        <div class="text-danger" *ngIf="formularioRegister.senha.touched && formularioRegister.senha.invalid">
+                            <span *ngIf="formularioRegister.senha.errors.required">
+                                Por favor, informe sua senha de acesso.
+                            </span>    
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Confirme sua senha:</label>
+                        <input type="password" class="form-control" placeholder="Confirme sua senha" formControlName="confirmarSenha"/>
+
+                        <div class="text-danger" *ngIf="formularioRegister.confirmarSenha.touched && formularioRegister.confirmarSenha.invalid">
+                            <span *ngIf="formularioRegister.confirmarSenha.errors.required">
+                                Por favor, informe sua senha de acesso.
+                            </span>   
+                            <span *ngIf="formularioRegister.confirmarSenha.errors.matchpassword">
+                                Senhas não conferem, por favor verifique.
+                            </span>   
+
+
+                        </div>
+                    </div>
+ 
+                    <div class="mb-2 d-grid">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Realizar cadastro" [disabled]="!formRegister.valid"/>
+                    </div>
+ 
+                    <div class="mb-2 d-grid">
+                        <a [routerLink]="['/acessar-conta']" class="btn btn-light btn-sm">
+                            Já possui conta? <strong>Click aqui!</strong>
+                        </a>
+                    </div>
+ 
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+</div>
+ 

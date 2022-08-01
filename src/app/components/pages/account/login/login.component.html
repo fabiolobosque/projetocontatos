@@ -1,0 +1,58 @@
+<div class="row mt-4">
+    <div class="col-md-4 offset-4">
+        <div class="card">
+            <img src="https://amplificadigital.com.br/wp-content/uploads/2020/02/amplifica_banner_blog_business.png" class="card-img-top"/>
+            <div class="card-body">
+                <div class="text-center">
+                    <h5 class="card-title">Acessar Agenda de Contatos</h5>
+                    <p class="card-subtitle">Informe suas credenciais de acesso.</p>
+                </div>
+               
+                <form class="mt-1" [formGroup]="formLogin" (ngSubmit)="onSubmit()" >
+ 
+                    <div class="mb-2">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control" placeholder="Digite seu email aqui" formControlName="email"/>
+
+                        <div class="text-danger" *ngIf="formularioLogin.email.touched && formularioLogin.email.invalid">
+                            <span *ngIf="formularioLogin.email.errors.required">
+                                Por favor, informe seu email de acesso.
+                            </span>
+                            <span *ngIf="formularioLogin.email.errors.email">
+                                Por favor, informe um endereço de email válido.
+                            </span>    
+                        </div>
+                    </div>
+ 
+                    <div class="mb-2">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control" placeholder="Digite sua senha aqui" formControlName="senha"/>
+
+                        <div class="text-danger" *ngIf="formularioLogin.senha.touched && formularioLogin.senha.invalid">
+                            <span *ngIf="formularioLogin.senha.errors.required">
+                                Por favor, informe sua senha de acesso.
+                            </span>   
+                        </div>
+
+                        <div class="text-end">
+                             <a [routerLink]="['/recuperar-senha']">Esqueci minha senha?</a>
+                        </div>
+                    </div>
+ 
+                    <div class="mb-2 d-grid">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Acessar Agenda" [disabled]="!formLogin.valid"/>
+                    </div>
+ 
+                    <div class="mb-2 d-grid">
+                        <a [routerLink]="['/criar-conta']" class="btn btn-light btn-sm">
+                            Não possui conta? <strong>Cadastre-se aqui!</strong>
+                        </a>
+                    </div>
+ 
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+</div>
+ 
