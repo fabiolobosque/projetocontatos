@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  /* mapear endereço da API */
+  apiContatos: 'http://contatosapi-001-site1.atempurl.com/api'
 };
 
 /*
