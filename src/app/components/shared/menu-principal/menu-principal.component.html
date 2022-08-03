@@ -5,7 +5,8 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="!auth">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" routerLink="acessar-conta">
@@ -24,5 +25,33 @@
                 </li>
             </ul>
         </div>
+ 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="auth">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Gerenciar Contatos
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" routerLink="contatos-cadastro">Cadastrar Contatos</a></li>
+                      <li><a class="dropdown-item" routerLink="contatos-consulta">Consultar Contatos</a></li>
+                    </ul>
+                  </li>
+            </ul>
+        </div>
+ 
+        <div class="collapse navbar-collapse" *ngIf="auth">
+            <p class="navbar-text" style="margin: 0">
+                <span>
+                    Seja bem vindo, <strong>{{auth.nome}}</strong>
+                </span>
+                <br/>
+                <button class="btn btn-sm btn-outline-secondary mt-2" (click)="logout()">
+                    Sair do sistema
+                </button>
+            </p>
+            
+        </div>
+ 
     </div>
 </nav>

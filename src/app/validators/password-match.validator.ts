@@ -3,15 +3,19 @@ import { AbstractControl } from "@angular/forms";
 export class PasswordMatchValidator {
 
     //método para executar a validação
-    static MatchPassword(abstractControl: AbstractControl){
+    static MatchPassword(abstractControl: AbstractControl) {
 
         //capturar os campos do formulário que serão validados
         let senha = abstractControl.get('senha')?.value;
-        let confirmarSenha = abstractControl.get('confirmarSenha')?.value;
+        let senhaConfirmacao = abstractControl
+                               .get('confirmarSenha')?.value;
 
-        if(confirmarSenha.length > 0 && senha != confirmarSenha){
-            //gerar um erro de validação no campo 'confirmarSenha
+        //verificar se os valores são diferentes
+        if (senha != senhaConfirmacao) {
+
+            //gerar um erro de validação no campo 'senhaConfirmacao'
             abstractControl.get('confirmarSenha')?.setErrors({
+
                 //nome do erro que será gerado
                 matchpassword: true
             })
