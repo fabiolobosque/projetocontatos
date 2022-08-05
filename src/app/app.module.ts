@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { AppComponent } from './app.component';
 import { MenuPrincipalComponent } from './components/shared/menu-principal/menu-principal.component';
@@ -16,6 +19,8 @@ import { ContatosCadastroComponent } from './components/pages/contatos/contatos-
 import { ContatosConsultaComponent } from './components/pages/contatos/contatos-consulta/contatos-consulta.component';
 import { ContatosEdicaoComponent } from './components/pages/contatos/contatos-edicao/contatos-edicao.component';
 import { ContatosGuard } from './guards/contatos.guard';
+import { AccountGuard } from './guards/account.guard';
+import { AlertaMensagensComponent } from './components/shared/alerta-mensagens/alerta-mensagens.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { ContatosGuard } from './guards/contatos.guard';
     PasswordComponent,
     ContatosCadastroComponent,
     ContatosConsultaComponent,
-    ContatosEdicaoComponent    
+    ContatosEdicaoComponent,
+    AlertaMensagensComponent    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,10 @@ import { ContatosGuard } from './guards/contatos.guard';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule,
+    FilterPipeModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     {
@@ -43,7 +52,8 @@ import { ContatosGuard } from './guards/contatos.guard';
       useClass: AuthInterceptor,
       multi: true
     },
-    ContatosGuard
+    ContatosGuard,
+    AccountGuard
   ],
   bootstrap: [AppComponent]
 })

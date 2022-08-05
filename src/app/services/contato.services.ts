@@ -35,12 +35,12 @@ export class ContatoService{
 
     //consultar todos os contatos
     getContatos() : Observable<Contato[]>{
-        return this.httpClient.delete<Contato[]>(`${environment.apiContatos}/contatos`);
+        return this.httpClient.get<Contato[]>(`${environment.apiContatos}/contatos`);
     }
 
     //consultar um contato através do ID
     getContatoPorId(id: string) : Observable<Contato>{
-        return this.httpClient.delete<Contato>(`${environment.apiContatos}/contatos/${id}`);
+        return this.httpClient.get<Contato>(`${environment.apiContatos}/contatos/${id}`);
     }
 
 }

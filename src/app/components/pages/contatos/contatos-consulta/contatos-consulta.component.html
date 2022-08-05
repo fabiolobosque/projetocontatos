@@ -6,8 +6,18 @@
                 <div class="card-body">
                     <h5 class="card-title">Consulta de Contatos</h5>
                     <hr />
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="card-title">Consulta de Contatos</h5>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" [(ngModel)]="filtro.nome"
+                                placeholder="Filtrar pelo nome do contato"/>
+                        </div>
+                    </div>
  
-                    <table class="table table-sm table-hover">
+                    <table class="table table-sm table-hover ">
                         <thead>
                             <tr>
                                 <th>Nome do contato</th>
@@ -17,14 +27,14 @@
                                 <th>Operações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                        <tbody class="table-group-divider">
+                            <tr *ngFor="let contato of listaContatos | filterBy: filtro | paginate : {itemsPerPage: 5, currentPage: pagina}">
+                                <td>{{contato.nome | uppercase}}</td>
+                                <td>{{contato.email | lowercase}}</td>
+                                <td>{{contato.telefone | mask: '(00) 00000-0000'}}</td>
+                                <td>{{contato.dataCriacao | date : 'dd/MM/YYYY HH:mm'}}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary">
+                                    <button class="btn btn-sm btn-primary" [routerLink]="['/contatos-edicao', contato.idContato]">
                                         Editar
                                     </button>
                                     &nbsp;
@@ -37,12 +47,19 @@
                         <tfoot>
                             <tr>
                                 <td colspan="5">
-                                    Quantidade de contatos: 0
+                                    Quantidade de contatos: {{(listaContatos | filterBy: filtro).length}}
                                 </td>
                             </tr>
                         </tfoot>
                     </table>
  
+                    <div class="text-center mt-2">
+                        <pagination-controls
+                            (pageChange)="handlePageChange($event)"
+                            previousLabel="Página anterior"
+                            nextLabel="Próxima página">
+                        </pagination-controls>
+                    </div>
                 </div>
             </div>
  

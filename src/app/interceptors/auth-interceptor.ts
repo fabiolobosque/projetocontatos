@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor{
     //método para implementar o interceptador
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
-        //verificar se a requisição que o httpCliente está fazendo para API é para o endpoint /api/cnotatos
+        //verificar se a requisição que o httpCliente está fazendo para API é para o endpoint /api/contatos
 
         if(req.url.includes("/api/contatos")){
             var auth = this.authHelper.getAuthData();
