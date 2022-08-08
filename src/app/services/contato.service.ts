@@ -42,5 +42,6 @@ export class ContatoService{
     getContatoPorId(id: string) : Observable<Contato>{
         return this.httpClient.get<Contato>(`${environment.apiContatos}/contatos/${id}`);
     }
+    
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Contato } from 'src/app/models/contato.models';
-import { ContatoService } from 'src/app/services/contato.services';
+import { ContatoService } from 'src/app/services/contato.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 

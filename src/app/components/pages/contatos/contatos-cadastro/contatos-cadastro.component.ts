@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ContatoService } from 'src/app/services/contato.services';
+import { ContatoService } from 'src/app/services/contato.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertaMensagensComponent } from 'src/app/components/shared/alerta-mensagens/alerta-mensagens.component';
 
